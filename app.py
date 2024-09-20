@@ -1,13 +1,32 @@
-from fastapi import FastAPI
-from fastapi.responses import JSONResponse
+import os
+from fastapi import FastAPI, File, UploadFile
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
 
-@app.get("/")
+# Create an uploads directory if it doesn't exist
+uploads_dir = "uploads"
+os.makedirs(uploads_dir, exist_ok=True)
+
+# Mount static files directory
+app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/uploads", StaticFiles(directory=uploads_dir), name="uploads")
+
+@app.get("/", response_class=HTMLResponse)
 def read_root():
-    response = JSONResponse(content={"message": "lkjfdlfjdfl"})
-    response.headers["ngrok-skip-browser-warning"] = "true"
-    return response
+    with open("index.html") as f:
+        return f.read()
+
+@app.post("/upload")
+async def upload_image(image: UploadFile = File(...)):
+    # Save the uploaded image file
+    file_path = os.path.join(uploads_dir, image.filename)
+    with open(file_path, "wb") as f:
+        contents = await image.read()
+        f.write(contents)
+    
+    return {"filename": image.filename, "url": f"/uploads/{image.filename}"}
 
 @app.get("/health")
 def health_check():
