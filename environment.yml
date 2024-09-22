@@ -15,7 +15,7 @@ dependencies:
   - brotli-bin=1.1.0=hb9d3cd8_2
   - brunsli=0.1=h9c3ff4c_0
   - bzip2=1.0.8=h5eee18b_6
-  - c-ares=1.33.1=heb4867d_0
+  # - c-ares=1.33.1=heb4867d_0
   - c-blosc2=2.15.1=hc57e6cf_0
   - ca-certificates=2024.8.30=hbcca054_0
   - cairo=1.18.0=hebfffa5_3
