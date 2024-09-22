@@ -14,7 +14,7 @@ entity_unit_map = {
     'item_volume': {'centilitre', 'cubic foot', 'cubic inch', 'cup', 'decilitre', 'fluid ounce', 'gallon', 'imperial gallon', 'litre', 'microlitre', 'millilitre', 'pint', 'quart'}
 }
 
-test_df = pd.read_csv('dataset/final_test.csv')
+test_df = pd.read_csv('../pyscripts/outputs/easyocr_output.csv')
 
 
 import pandas as pd
@@ -62,13 +62,13 @@ def process_row(image_path, extracted_text, prompt):
         return ""
 
 # Read the CSV file (input data)
-input_csv_path = 'dataset/final_test.csv'
-output_csv_path = 'output10000_15000.csv'
+input_csv_path = '../pyscripts/outputs/easyocr_output.csv'
+output_csv_path = 'llm_op.csv'
 test_df = pd.read_csv(input_csv_path)
 
 # Ensure 'easyocr_text' and 'tesseract_text' are strings, replacing NaN with empty strings
 test_df['easyocr_text'] = test_df['easyocr_text'].fillna('').astype(str)
-test_df['tesseract_text'] = test_df['tesseract_text'].fillna('').astype(str)
+# test_df['tesseract_text'] = test_df['tesseract_text'].fillna('').astype(str)
 
 # Prepare the prompt for each row
 prompt_template = "Identify the {entity_name} from the text and image and output only two words. The unit should be one of {allowed_units}. reply in very short and answer inteligently"
@@ -81,8 +81,9 @@ output_df.to_csv(output_csv_path, index=False)
 for index, row in test_df.iterrows():
     if(index < 10000): continue
     image_names = row['image_name']
-    image_path = "/raid/ai23mtech11004/amazon-ml/test_images/" + image_names
-    extracted_text = row['easyocr_text'] + " " + row['tesseract_text']  # Combine texts
+    image_path = "../uploads/" + image_names
+    # extracted_text = row['easyocr_text'] + " " + row['tesseract_text']  # Combine texts
+    extracted_text = row['easyocr_text']  # Combine texts
     entity_name = row['entity_name']
     
     # Define allowed units based on the entity_name

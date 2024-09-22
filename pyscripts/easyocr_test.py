@@ -8,7 +8,7 @@ import pandas as pd
 from tqdm import tqdm
 
 # Define image directory and output file
-dataset_dir = "train_images"
+dataset_dir = "../uploads/"
 image_extensions = ['.png', '.jpg', '.jpeg']
 output_dir = "outputs"
 output_filename = "easyocr_output.csv"
@@ -17,12 +17,13 @@ output_filename = "easyocr_output.csv"
 os.makedirs(output_dir, exist_ok=True)
 
 # Initialize EasyOCR reader (outside the loop)
-reader = easyocr.Reader(['en'], gpu=True)
+reader = easyocr.Reader(['en'])
 
 # CSV file path where the data will be written
 csv_filepath = os.path.join(output_dir, output_filename)
 
 # Function to extract text using EasyOCR
+
 def extract_text_from_image(image_path):
     try:
         result = reader.readtext(image_path, detail=0)
@@ -31,6 +32,7 @@ def extract_text_from_image(image_path):
     except Exception as e:
         print(f"Error extracting text from {image_path}: {e}")
         return None
+
 
 # Process dataset directory to extract text from images and write directly to CSV
 def process_and_save_to_csv(dataset_dir, csv_filepath):
