@@ -6,6 +6,7 @@ body {
     height: 100vh;
     margin: 0;
     background-color: #f0f0f0;
+    flex-direction: column;  /* Aligns content vertically */
 }
 
 #drop-area {
@@ -18,8 +19,31 @@ body {
     align-items: center;
     background-color: #fff;
     transition: background-color 0.3s;
+    margin-bottom: 20px; /* Adds space between drop area and dropdowns */
 }
 
 #drop-area.dragover {
     background-color: #e0e0e0;
+}
+
+#dropdown-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px; /* Same width as the drop area for consistency */
+}
+
+label {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 14px;
 }
