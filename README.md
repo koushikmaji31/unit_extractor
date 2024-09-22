@@ -1,13 +1,33 @@
-# unit_extractor
-A staright forward way to run unit 
+# **Unit Extractor**
 
-# To Run Unit Extarctor
+A simple and efficient tool for extracting units from data.
 
-## 1. Setting up the conda environment  
+---
 
-### conda env create -f environment.yml
+## **How to Run the Unit Extractor**
 
-## 2. Activating conda environment
+Follow the steps below to set up and run the Unit Extractor:
 
-### conda activate uex
+### 1. **Set Up the Conda Environment**
 
+First, create the conda environment using the provided `environment.yml` file:
+
+```bash
+conda env create -f environment.yml
+```
+
+This will install all the necessary dependencies and packages.
+
+### 2. **Activate the Conda Environment**
+
+After the environment is successfully created, activate it with the following command:
+
+```bash
+conda activate uex
+```
+
+This ensures you're working in the correct environment with all required libraries.
+
+---
+
+Now you're all set! Start extracting units with **Unit Extractor** effortlessly. 🎉
