@@ -10,7 +10,7 @@ import io
 
 # Import functions from other scripts
 from easyocr_test import extract_text_from_image  # Updated import
-from llm import process_row
+from pyscripts.llm import process_row
 from regex import extract_value_unit
 
 # Debug prints

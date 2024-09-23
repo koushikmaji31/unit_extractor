@@ -25,6 +25,7 @@ async def upload_image(image: UploadFile = File(...)):
     with open(file_path, "wb") as f:
         contents = await image.read()
         f.write(contents)
+        # aap.inference -> calling three scripts -> easyocr.py -> llm.py -> regex.py -> output. 
     
     return {"filename": image.filename, "url": f"/uploads/{image.filename}"}
 
