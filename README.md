@@ -6,7 +6,7 @@ A simple and efficient tool for extracting units from data.
 
 ## **How to Run the Unit Extractor**
 
-Follow the steps below to set up and run the Unit Extractor:
+Follow the steps below to set up and run the Unit Extractor in local:
 
 ### 1. **Set Up the Conda Environment**
 
